@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="div_teste" class="div_test">
+    <div class="InputsDiv">
+    <p class="titulo">Calculadora de orçamento</p> <br>
+    Nome da empresa : 
+    <input type="text" id="Nome"> <br>
+    Quantidade de Sistemas pretendidos: 
+    <input type="text" name="" id="QTD"> <br>
+    Tamanho da janela(Pequena,Media ou Grande):
+    <select id="select_tamanho" name="select"> 
+        <option value="Pequena">Pequena</option> 
+        <option value="Média">Média</option> 
+        <option value="Grande">Grande</option> 
+    </select> <br> <br>
+    <button onclick="CalcularVendas()"> 
+        Fazer orçamento? 
+    </button>
+    </div>
+ <br>
+        <div id="div_compra"></div>
+        <div id="div_condicao"></div>
+</div>
+</body>
+</html>
+
+<script>
+    function CalcularVendas() {
+        var Tamanho = select_tamanho.value
+        var QTDsystem = Number(QTD.value)
+        var precoPorUnidade = QTDsystem * 684
+        var NomeEmpresa = Nome.value
+
+        if (Tamanho == "Pequena"){
+            precoPorUnidade = precoPorUnidade * 1
+        } if (Tamanho == "Média"){
+            precoPorUnidade += precoPorUnidade * 0.1
+        } if (Tamanho == "Grande") {
+            precoPorUnidade += precoPorUnidade * 0.2
+        }
+        if(QTDsystem <10){
+        div_teste.innerHTML = `
+        <buttom onclick="Return()">Tentar Dnv</buttom> <div style="display: flex; flex-direction: column; align-items: center; background-color:blanchedalmond">${NomeEmpresa}, Adquirindo um total de ${QTDsystem} Windas por um preço de <b>R$${precoPorUnidade}</b></div>`
+        }else if (QTDsystem >= 10){
+            precoPorUnidade =precoPorUnidade - (precoPorUnidade * 0.1)
+        div_teste.innerHTML = `<buttom onclick="Return()">Tentar Dnv</buttom> <div style="display: flex; flex-direction: column; align-items: center; background-color: blanchedalmond;"> ${NomeEmpresa}, Adquirindo um total de ${QTDsystem} Windas por um preço de <b>R$${precoPorUnidade}</b> Você adquirindo 10 janelas ou mais possui um desconto de 10% na compra ficando <b>R$${precoPorUnidade}</b></div>
+`
+        }
+    }
+    function Return() {
+    div_teste.innerHTML = 
+    `
+    <div class="div_test">
+    <div class="InputsDiv">
+    <p class="titulo">Calculadora de orçamento</p> <br>
+    Nome da empresa : 
+    <input type="text" id="Nome"> <br>
+    Quantidade de Sistemas pretendidos: 
+    <input type="text" name="" id="QTD"> <br>
+    Tamanho da janela(Pequena,Media ou Grande):
+    <select id="select_tamanho" name="select"> 
+        <option value="Pequena">Pequena</option> 
+        <option value="Média">Média</option> 
+        <option value="Grande">Grande</option> 
+    </select> <br> <br>
+    <button onclick="CalcularVendas()"> 
+        Fazer orçamento? 
+    </button>
+    </div>
+ <br>
+        <div id="div_compra"></div>
+        <div id="div_condicao"></div>
+</div>
+    `
+    }
+</script>

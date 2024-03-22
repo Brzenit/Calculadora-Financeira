@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Calculadora financeira</title>
+</head>
+<body>
+  <div id="Div_inputValores" class="base container1">
+   <h1>Voce quer economizar com seu hotel?</h1>
+   <h2>que tal economizar com uma janela inteligente.</h2>
+   <p>quer saber como ?</p>
+   <button onclick="levarprocontainer2()">clique aqui</button>
+   <p>OK</p>
+   <input type="checkbox" name="" id="checkbox_input">
+ </div>
+
+ <br>
+ 
+ Quantos Metros Quadrados tem seu quarto? 
+ <input type="number">
+ Voce tem problemas com umidade nos quartos ?
+ <input id="Umidade_quarto" type="text"><br>
+ mais alguma coisa bla bla bla?
+ <input id="input_vazio" type="number"><br>
+ mais outra coisa bla bla bla?
+ <input id="input_vazio2" type="number"><br> 
+ 
+
+ 
+</body>
+</html>
+
+<script>
+
+  function levarprocontainer2() {
+
+  Div_inputValores.innerHTML = `
+  <div  class="base container2">
+  quantos ares condicionados voce possui no seu estabelecimento ? <br>
+ <input id="QTD_arCond" type="number"><br>
+ quantas horas ele costuma ficar ligado? <br>
+ <input id="Tempo_LigadoAr" type="number"><br>
+ quantos dias ele costuma ficar ligado?
+ <input id="Dias_ligado" type="number"><br>
+  de quantos BTUs são os ares instalados no estabelecimento?
+  <select id="select_BTU">
+    <option value="7000">7000 BTU</option>
+    <option value="9000">9000 BTU</option>
+    <option value="12000">12000 BTU</option>
+    <option value="16000">16000 BTU</option>
+    <option value="20000">20000 BTU</option>
+    <option value="24000">24000 BTU</option>
+    <option value="28000">28000 BTU</option>
+    <option value="32000">32000 BTU</option>
+    <option value="36000">36000 BTU</option>
+    <option value="40000">40000 BTU</option>
+    <option value="48000">48000 BTU</option>
+    <option value="56000">56000 BTU</option>
+  </select> <br> 
+  <br>
+  <button onclick="funcao1()">Você tem problemas com Umidade ?</button>
+  <button onclick="SemUmidade()">Se não, Clique Aqui.</button>
+  </div>
+    `
+}
+
+    var HorasAr = Number(Tempo_LigadoAr.value);
+    var QtdAres = Number(QTD_arCond.value);
+    var DiasAr =Number(Dias_ligado.value)
+    var BTUar = Number(select_BTU.value)
+    var WattsAR = BTUar / 0.293
+    var ContaKWHmes =  (WattsAR * HorasAr)* DiasAr / 1000
+
+   
+
+  function calcularGastos1(){
+   
+  }   
+    function funcao1(){
+      Div_inputValores.innerHTML = `
+      Quantos Metros Quadrados tem seu quarto? 
+      <input type="number">
+    <buttom onclick="Resultado()">Botao</buttom>
+    `
+            }
+            
+            function Resultado()  {
+        var status = 1 
+
+            }
+
+    function SemUmidade(){
+    Div_inputValores.innerHTML = `
+    <p>De acordo com os valores mencionados, seu gasto em KwH/mes é de ${ContaKWHmes} e sua conta poderá reduzir em XX% utilizando nosso sistema que custa somente XX Reais por janelas, e invés de pagar contas de R$BBBB Pagaria contas mais acessiveis de R$CCCC.</p>
+    
+   
+    <p>Adquira sua winda, oque esta esperando para ter a praticidade em um sistema na palma da mão ou do Computador?</p>
+    `
+
+    }
+
+    
+  
+  
+
+
+
+  // `
+  // De acordo com os valores mencionados, seu gasto em KwH/mes é de AAAA e sua conta poderá reduzir em XX% utilizando nosso sistema que custa somente XX Reais por janelas, e invés de pagar contas de R$BBBB Pagaria contas mais acessiveis de R$CCCC.
+  // `
+  
+  // `
+  // Seu imovel pode vir a te custar uma manutencao de R$DDDD e tendo isso em mente, podemos previnir e aumentar a durabilidade de sua estrutura que demoraria mais tempo para ser realizado esta manutenco.
+  // `
+  
+  // `
+  // Adquira sua winda, oque esta esperando para ter a praticidade em um sistema na palma da mão ou do Computador?
+  // `
+  
+  </script>
